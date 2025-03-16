@@ -7,7 +7,7 @@ from words import words
 import string
 
 def get_valid_word(words):
-    word = random.choice(words):    #get random word from list
+    word = random.choice(words)    #get random word from list
     while "-" in word or " " in word:
         word = random.choice(words)
 
@@ -16,7 +16,7 @@ def get_valid_word(words):
 def hangman():
     word = get_valid_word(words)
     word_letters = set(word) # letters in the word
-      alphabet = set(string.ascii_uppercase)
+    alphabet = set(string.ascii_uppercase)
     used_letters = set() # what the user has guessed
 
     # adding user input 
