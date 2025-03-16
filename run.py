@@ -30,4 +30,7 @@ def hangman():
         print('Try again. You have already guessed that character')
 
     else:
-        print('Try again. You have guessed an invalid character.')        
+        print('Try again. You have guessed an invalid character.')
+
+# Call the hangman function to start the game
+hangman()
