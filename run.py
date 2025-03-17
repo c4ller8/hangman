@@ -20,17 +20,18 @@ def hangman():
     used_letters = set() # what the user has guessed
 
     # adding user input 
-    user_letter = input('Guess a letter: ').upper()
-    if user_letter in alphabet - used_letters:
-        used_letters.add(user_letter)
-        if user_letter in word_letters:
-            word_letters.remove(user_letter)
+    while len(word_letters) > 0:
+        user_letter = input('Guess a letter: ').upper()
+        if user_letter in alphabet - used_letters:
+            used_letters.add(user_letter)
+            if user_letter in word_letters:
+                word_letters.remove(user_letter)
 
-    elif user_letter in used_letters:
-        print('Try again. You have already guessed that character')
+        elif user_letter in used_letters:
+            print('Try again. You have already guessed that character')
 
-    else:
-        print('Try again. You have guessed an invalid character.')
-
+        else:
+            print('Try again. You have guessed an invalid character.')
+    # gets here when len(word_letters) == 0
 # Call the hangman function to start the game
 hangman()
