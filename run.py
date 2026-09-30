@@ -6,29 +6,44 @@ import random
 from words import words
 import string
 
+
 def get_valid_word(words):
-    word = random.choice(words)    #get random word from list
+    """function gets valid word from list"""
+    # get random word from list
+    list_words = ['dog', 'cat', 'cactus', 'alpha']
+    word = random.choice(list_words)
+    print(word)
     while "-" in word or " " in word:
         word = random.choice(words)
 
         return word.upper()
 
+
 def hangman():
     word = get_valid_word(words)
-    word_letters = set(word) # letters in the word
+    # letters in the word
+    word_letters = set(word)
     alphabet = set(string.ascii_uppercase)
-    used_letters = set() # what the user has guessed
+    # what the user has guessed
+    used_letters = set()
 
     lives = 8
 
-    # adding user input 
+    # adding user input
     while len(word_letters) > 0 and lives > 0:
         # letters used
         # ' '.join(['a', 'b', 'cd']) --> 'a b cd'
-        print('You have', lives, 'lives left and you have used these letters: ', ' '.join(used_letters))
+        print(
+            'You have',
+            lives,
+            'lives left and you have used these letters: ',
+            ' '.join(used_letters)
+        )
 
         # what current word is (ie W - R D)
-        word_list = [letter if letter in used_letters else '-' for letter in word]
+        word_list = [
+            letter if letter in used_letters else '-' for letter in word
+        ]
         print('Current word: ', ' '.join(word_list))
 
         user_letter = input('Guess a letter: ').upper()
@@ -37,7 +52,8 @@ def hangman():
             if user_letter in word_letters:
                 word_letters.remove(user_letter)
             else:
-                lives = lives - 1 # tales away a life if wrong
+                # tales away a life if wrong
+                lives = lives - 1
                 print('Letter is not in word.')
 
         elif user_letter in used_letters:
@@ -49,6 +65,8 @@ def hangman():
     if lives == 0:
         print('You have died Game Over! THe word was'. word)
     else:
-        print('You guessed the word', word, '!!')    
+        print('You guessed the word', word, '!!')
+
+
 # Call the hangman function to start the game
 hangman()
